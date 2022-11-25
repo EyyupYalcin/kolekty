@@ -1,0 +1,10 @@
+function get_::[TabloAdi]::_where($raw_where){
+    GLOBAL $db;
+    $sorgu_dizgesi = "
+        SELECT * FROM ::[TabloAdi]:: WHERE
+    " . $raw_where;
+    $sorgu = $db->prepare($sorgu_dizgesi);
+    $sorgu->execute();
+    $sonuclar = $sorgu->fetchAll(PDO::FETCH_ASSOC);
+    return $sonuclar;
+}

@@ -1,0 +1,15 @@
+/**
+ * Parametreler
+ * $altAralik => tarih saat (String) 
+ * $ustAralik => tarih saat (String) 
+ **/
+function get_::[TabloAdi]::_By_::[Kolon]::($altAralik, $ustAralik){
+    GLOBAL $db;
+    $sorgu_dizgesi = "
+        SELECT * FROM ::[TabloAdi]:: WHERE ::[Kolon]:: BETWEEN CAST('?' AS datetime) AND CAST('?' AS datetime)
+    ";
+    $sorgu = $db->prepare($sorgu_dizgesi);
+    $sorgu->execute([$altAralik, $ustAralik]);
+    $sonuclar = $sorgu->fetchAll(PDO::FETCH_ASSOC);
+    return $sonuclar;
+}

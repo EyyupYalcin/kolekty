@@ -1,0 +1,3 @@
+<?php
+    $baslik = "Giriş Yap";
+?>

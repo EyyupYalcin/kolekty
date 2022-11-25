@@ -1,0 +1,52 @@
+engine veri tabanı bilgileri 
+// hostname = "kolekty.com"
+$hostname = "localhost";
+$username = "admin";
+$password = "F!Lq5,50oltd";
+$database = "u0294194_engine";
+
+-> PDO Baglantısı ile veri tabanı baglama işlemlerini yapacağız.
+
+*******************SELECT*******************
+		
+        $webServisBilgiSorgula = $db->prepare("select * from test where id=?");
+
+        $webServisBilgiSorgula->execute(array($aranacak_kelime));
+
+        $webServisBilgi = $webServisBilgiSorgula->fetchAll(PDO::FETCH_ASSOC); // dizi halinde döndürme işlemi yapılıyor 
+
+*******************INSERT*******************
+
+
+	$altBayiEkle = $db->prepare("INSERT INTO test set id=?,vkn=?");
+	$altBayiEkle->execute(array($id,$vkn ));
+
+
+*******************UPDATE*******************
+	
+ 	$pasif = $db->prepare("UPDATE test SET durum = ? WHERE id = ?");  // soru işareti yerine alt kısımda yer alan id gelmektedir.
+
+    	$pasif->execute(array(2, $id));
+
+*******************DELETE*******************
+ 
+
+-> Kullanıcı bilgilerini sha256 şifreleme kullanılarak veri tabanında tutulacaktır.
+
+$pass= randomPassword() // random bir şifre üretimi yapılıp sha ile şifrelenmiştir.
+
+$passSHA256 = sha256('encrypt', "$pass");
+
+
+function randomPassword()
+{
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+}
+

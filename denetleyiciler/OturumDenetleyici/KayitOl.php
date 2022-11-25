@@ -1,0 +1,3 @@
+<?php
+    $baslik = "Kayıt Ol";
+?>

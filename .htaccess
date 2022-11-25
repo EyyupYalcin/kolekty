@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks -MultiViews
+
+	RewriteEngine on
+	RewriteRule ^API\/([0-9A-Za-z\s\ı\ü\Ü\ğ\ç\Ç\ö\Ö\ş\Ş\İ\ğ\Ğ\Â\â\(\)\-\_]+)\/?([A-Za-z0-9\&\=]+)?$ API/index.php?api=$1&$2 [NC]
+	RewriteRule ^([0-9A-Za-z\s\ı\ü\Ü\ğ\ç\Ç\ö\Ö\ş\Ş\İ\ğ\Ğ\Â\â\(\)\-\_\/]+)\/?$ index.php?sayfa=$1 [NC]
+</IfModule>
+
+<filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|svg|mp4)$">
+    Header set Cache-Control "max-age=84600, public"
+</filesMatch>
+
+#----------------------------------------------------------------cp:ppd
+# Section managed by cPanel: Password Protected Directories     -cp:ppd
+# - Do not edit this section of the htaccess file!              -cp:ppd
+#----------------------------------------------------------------cp:ppd
+AuthType Basic
+AuthName "Protected 'dev.kolekty.com'"
+AuthUserFile "/home/u0294194/.htpasswds/dev.kolekty.com/passwd"
+Require valid-user
+#----------------------------------------------------------------cp:ppd
+# End section managed by cPanel: Password Protected Directories -cp:ppd
+#----------------------------------------------------------------cp:ppd
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

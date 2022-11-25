@@ -1,0 +1,2 @@
+<?php
+$baslik = "Parola Yenile";

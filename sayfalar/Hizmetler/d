@@ -1,0 +1,22 @@
+    <div class="card card-custom gutter-b mt-8">
+        <div class="card-header">
+            <div class="card-title">
+                <h3 class="card-label">
+                    <?= $secili_hizmet[0]['hizmet_adi'] ?> Hizmet Sağlayıcı Başvuru Formu
+                    <small></small>
+                </h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <?php include bilesen('adres_sec'); ?>
+        </div>
+        <div class="card-footer">
+            <?php 
+                Form::render('AjaxPostButton', [
+                    "id" => "KayitTamamla",
+                    "metin" => "Kaydet",
+                    "API" => "API/MusteriKayit",
+                ]);
+            ?>
+        </div>
+    </div>

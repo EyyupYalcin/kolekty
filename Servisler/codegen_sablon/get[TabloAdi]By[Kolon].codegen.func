@@ -1,0 +1,10 @@
+function get_::[TabloAdi]::_By_::[Kolon]::($::[Kolon]::){
+    GLOBAL $db;
+    $sorgu_dizgesi = "
+        SELECT * FROM ::[TabloAdi]:: WHERE ::[Kolon]:: = ?
+    ";
+    $sorgu = $db->prepare($sorgu_dizgesi);
+    $sorgu->execute([$::[Kolon]::]);
+    $sonuclar = $sorgu->fetch(PDO::FETCH_ASSOC);
+    return $sonuclar;
+}
