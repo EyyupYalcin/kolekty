@@ -1,1 +1,1 @@
-# kolekty
+# kolekty.com
